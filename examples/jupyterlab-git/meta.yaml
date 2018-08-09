@@ -1,0 +1,20 @@
+package:
+  name: jupyterlab-git
+  version: "v0.1.0"
+
+source:
+  git_url: https://github.com/jupyterlab/jupyterlab-git.git
+
+requirements:
+  build:
+    - nodejs
+    - jupyterlab>=0.33.4
+  run:
+    - nodejs
+    - jupyterlab>=0.33.4
+
+about:
+  home: https://github.com/jupyterlab/jupyterlab-git
+  license: "BSD 3-Clause"
+  license_file: LICENSE
+  creator: "JupyterLab team"

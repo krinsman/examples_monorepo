@@ -1,0 +1,19 @@
+package:
+  name: jupyterlab-flake8
+  version: "0.2.1"
+
+source:
+  git_url: https://github.com/mlshapiro/jupyterlab-flake8.git
+
+requirements:
+  build:
+    - nodejs
+    - jupyterlab>=0.33.4
+  run:
+    - nodejs
+    - jupyterlab>=0.33.4
+
+about:
+  home: https://github.com/mlshapiro/jupyterlab-flake8
+  license: None
+  creator: "Marc Shapiro"

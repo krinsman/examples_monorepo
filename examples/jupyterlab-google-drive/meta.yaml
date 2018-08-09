@@ -1,0 +1,20 @@
+package:
+  name: jupyterlab-google-drive
+  version: "v0.11.1"
+
+source:
+  git_url: https://github.com/jupyterlab/jupyterlab-google-drive.git
+
+requirements:
+  build:
+    - nodejs
+    - jupyterlab>=0.33.4
+  run:
+    - nodejs
+    - jupyterlab>=0.33.4
+
+about:
+  home: https://github.com/jupyterlab/jupyterlab-google-drive
+  license: "BSD 3-Clause"
+  license_file: LICENSE
+  creator: "JupyterLab team"

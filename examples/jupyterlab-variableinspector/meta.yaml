@@ -1,0 +1,20 @@
+package:
+  name: jupyterlab-variableinspector
+  version: "v0.1.0"
+
+source:
+  git_url: https://github.com/lckr/jupyterlab-variableInspector.git
+
+requirements:
+  build:
+    - nodejs
+    - jupyterlab>=0.33.4
+  run:
+    - nodejs
+    - jupyterlab>=0.33.4
+
+about:
+  home: https://github.com/lckr/jupyterlab-variableInspector
+  license: "MIT"
+  license_file: LICENSE
+  creator: "lckr - CS student at KIT"

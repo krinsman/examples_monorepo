@@ -1,0 +1,20 @@
+package:
+  name: jupyterlab_bokeh
+  version: "v0.1.0"
+
+source:
+  git_url: https://github.com/bokeh/jupyterlab_bokeh.git
+
+requirements:
+  build:
+    - nodejs
+    - jupyterlab>=0.33.4
+  run:
+    - nodejs
+    - jupyterlab>=0.33.4
+
+about:
+  home: https://github.com/bokeh/jupyterlab_bokeh
+  license: "BSD 3-Clause"
+  license_file: LICENSE.txt
+  creator: "Luke Canavan"

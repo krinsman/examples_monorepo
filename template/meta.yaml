@@ -1,0 +1,20 @@
+package:
+  name: 
+  version: 
+
+source:
+  git_url: 
+
+requirements:
+  build:
+    - nodejs
+    - jupyterlab
+  run:
+    - nodejs
+    - jupyterlab
+
+about:
+  home: 
+  license: 
+  license_file: 
+  creator: 

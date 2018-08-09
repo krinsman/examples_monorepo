@@ -1,0 +1,20 @@
+package:
+  name: jupyterlab-hub
+  version: "v0.10.0"
+
+source:
+  git_url: https://github.com/jupyterhub/jupyterlab-hub.git
+
+requirements:
+  build:
+    - nodejs
+    - jupyterlab>=0.33.4
+  run:
+    - nodejs
+    - jupyterlab>=0.33.4
+
+about:
+  home: https://github.com/jupyterhub/jupyterlab-hub
+  license: "BSD 3-Clause"
+  license_file: LICENSE
+  creator: "JupyterHub team"

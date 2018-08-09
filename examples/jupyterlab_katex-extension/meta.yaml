@@ -1,0 +1,20 @@
+package:
+  name: jupyterlab_katex-extension
+  version: "v0.16.0"
+
+source:
+  git_url: https://github.com/jupyterlab/jupyter-renderers.git
+
+requirements:
+  build:
+    - nodejs
+    - jupyterlab>=0.33.4
+  run:
+    - nodejs
+    - jupyterlab>=0.33.4
+
+about:
+  home: https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/katex-extension
+  license: "BSD 3-Clause"
+  license_file: LICENSE
+  creator: "JupyterLab team"

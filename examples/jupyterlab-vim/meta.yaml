@@ -1,0 +1,20 @@
+package:
+  name: jupyterlab-vim
+  version: "v0.8.0"
+
+source:
+  git_url: https://github.com/jwkvam/jupyterlab-vim.git
+
+requirements:
+  build:
+    - nodejs
+    - jupyterlab>=0.33.4
+  run:
+    - nodejs
+    - jupyterlab>=0.33.4
+
+about:
+  home: https://github.com/jwkvam/jupyterlab-vim
+  license: "MIT"
+  license_file: LICENSE
+  creator: "Jacques Kvam"
