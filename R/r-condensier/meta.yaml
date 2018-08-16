@@ -1,0 +1,162 @@
+{% set version = '0.0.3' %}
+
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-condensier
+  version: {{ version|replace("-", "_") }}
+
+source:
+
+  git_url: https://github.com/osofr/condensier
+
+build:
+  merge_build_host: True  # [win]
+  # If this is a new build for the same version, increment the build number.
+  number: 0
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: covr, pillar, testthat
+requirements:
+  build:
+    - {{ compiler('c') }}          # [not win]
+    - {{ compiler('cxx') }}        # [not win]
+    - {{native}}toolchain          # [win]
+    - {{posix}}filesystem          # [win]
+    - {{posix}}git
+
+  host:
+    - r-base >=3.2.0
+    - r-assertthat
+    - r-data.table
+    - r-matrix
+    - r-r6
+    - r-rcpp
+    - r-simcausal
+    - r-speedglm
+    - r-stringr
+    - r-doparallel
+    - r-foreach
+    - r-matrixstats
+    - r-roxygen2
+    - r-testthat
+    - r-mockery
+    - r-here
+    - r-dplyr
+    - r-mixtools
+
+  run:
+    - r-base >=3.2.0
+    - r-assertthat
+    - r-data.table
+    - r-matrix
+    - r-r6
+    - r-rcpp
+    - r-simcausal
+    - r-speedglm
+    - r-stringr
+    - r-doparallel
+    - r-foreach
+    - r-matrixstats
+    - r-roxygen2
+    - r-testthat
+    - r-mockery
+    - r-here
+    - r-dplyr
+    - r-mixtools
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('condensier')"           # [not win]
+    - "\"%R%\" -e \"library('condensier')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/osofr/condensier
+  license: GPL-2
+  summary: Non-Parametric Conditional Density Estimation
+  license_family: GPL
+
+# The original GitHub metadata for this package was:
+
+# Package: condensier
+# Title: Non-Parametric Conditional Density Estimation
+# Version: 0.0.3
+# Authors@R: c(
+#     person("Oleg", "Sofrygin", email = "oleg.sofrygin@gmail.com",
+#            role = c("aut", "cre")),
+#     person("Frank", "Blaauw", email = "f.j.blaauw@rug.nl",
+#            role = "aut"),
+#     person("Antoine", "Chambaz", email = "achambaz@u-paris10.fr",
+#            role = "aut"),
+#     person(c("Mark", "J."), "van der Laan", email = "laan@berkeley.edu",
+#            role = "aut"),
+#     person("Nima", "Hejazi", email  = "nh@nimahejazi.org",
+#            role = "ctb",
+#            comment = c(ORCID = "0000-0002-7127-2789"))
+#     )
+# Description: Nonparametric conditional density estimation with binned
+#     histograms.
+# URL: https://github.com/osofr/condensier
+# BugReports: https://github.com/osofr/condensier/issues
+# Depends:
+#     R (>= 3.2.0)
+# Imports:
+#     assertthat,
+#     data.table,
+#     Matrix,
+#     methods,
+#     R6,
+#     Rcpp,
+#     simcausal,
+#     speedglm,
+#     stats,
+#     stringr
+# LinkingTo: Rcpp
+# Suggests:
+#     doParallel,
+#     foreach,
+#     knitr,
+#     matrixStats,
+#     roxygen2,
+#     testthat,
+#     mockery,
+#     here,
+#     dplyr,
+#     tools,
+#     mixtools
+# VignetteBuilder: knitr
+# Encoding: UTF-8
+# License: GPL-2
+# LazyData: true
+# RoxygenNote: 6.0.1.9000
+# Collate: 
+#     'GlmAlgorithmClass.R'
+#     'BinOutModelClass.R'
+#     'DataStoreClass.R'
+#     'OLD_densifier.R'
+#     'OLD_modelhdensity.R'
+#     'RcppExports.R'
+#     'RegressionClass.R'
+#     'SummariesModelClass.R'
+#     'SummaryModelCategorClasss.R'
+#     'SummaryModelContinClasss.R'
+#     'data.R'
+#     'dhist.r'
+#     'fit.R'
+#     'zzz.R'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

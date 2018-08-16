@@ -1,0 +1,120 @@
+{% set version = '0.2.1' %}
+
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-delayed
+  version: {{ version|replace("-", "_") }}
+
+source:
+
+  git_url: https://github.com/tlverse/delayed
+
+build:
+  merge_build_host: True  # [win]
+  # If this is a new build for the same version, increment the build number.
+  number: 0
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: covr, pillar, testthat
+requirements:
+  build:
+    - {{ compiler('c') }}          # [not win]
+    - {{ compiler('cxx') }}        # [not win]
+    - {{native}}toolchain          # [win]
+    - {{posix}}filesystem          # [win]
+    - {{posix}}git
+
+  host:
+    - r-base>=3.2.0
+    - r-r6
+    - r-igraph
+    - r-future
+    - r-rstackdeque
+    - r-rlang
+    - r-data.table
+    - r-assertthat
+    - r-visnetwork
+    - r-uuid
+    - r-bbmisc
+    - r-testthat
+
+  run:
+    - r-base>=3.2.0
+    - r-r6
+    - r-igraph
+    - r-future
+    - r-rstackdeque
+    - r-rlang
+    - r-data.table
+    - r-assertthat
+    - r-visnetwork
+    - r-uuid
+    - r-bbmisc
+    - r-testthat
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('delayed')"           # [not win]
+    - "\"%R%\" -e \"library('delayed')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://github.com/tlverse/delayed
+  license: GPL-3
+  summary: A Framework for Parallelizing Dependent Tasks 
+  license_family: GPL
+
+# The original GitHub metadata for this package was:
+
+# Package: delayed
+# Title: A Framework for Parallelizing Dependent Tasks
+# Version: 0.2.1
+# Authors@R: c(
+#     person("Jeremy", "Coyle", email = "jeremyrcoyle@gmail.com",
+#            role = c("aut", "cre", "cph")),
+#     person("Nima", "Hejazi", email = "nh@nimahejazi.org", role = "ctb"))
+# Description: This package provides mechanisms to parallelize dependent tasks in
+#     a manner that optimizes the compute resources available. It provides access
+#     to "delayed" computations, which may be parallelized using futures. It is,
+#     to an extent, a facsimile of the Dask library, for the Python language.
+# Depends:
+#     R (>= 3.2.0)
+# Imports:
+#     R6,
+#     igraph,
+#     future,
+#     rstackdeque,
+#     rlang,
+#     data.table,
+#     assertthat,
+#     visNetwork,
+#     uuid,
+#     BBmisc
+# Suggests:
+#     testthat,
+#     knitr,
+#     rmarkdown,
+#     shiny
+# License: GPL-3
+# URL: https://github.com/jeremyrcoyle/delayed
+# BugReports: https://github.com/jeremyrcoyle/delayed/issues
+# Encoding: UTF-8
+# LazyData: true
+# VignetteBuilder: knitr
+# RoxygenNote: 6.0.1
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

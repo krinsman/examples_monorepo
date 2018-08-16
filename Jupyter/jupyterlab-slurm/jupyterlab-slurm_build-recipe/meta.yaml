@@ -1,0 +1,21 @@
+package:
+  name: jupyterlab-slurm
+  version: "0.1.0"
+
+source:
+  git_url: https://github.com/krinsman/jupyterlab-slurm.git
+  git_rev: "0.1.0"
+
+requirements:
+  build:
+    - nodejs
+    - jupyterlab
+  run:
+    - nodejs
+    - jupyterlab
+
+about:
+  home: https://github.com/krinsman/jupyterlab-slurm
+  license: "BSD 3-Clause"
+  license_file: LICENSE
+  creator: "Jon Hays, William Krinsman, NERSC"

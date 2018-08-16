@@ -1,0 +1,40 @@
+package:
+  name: tensorly
+  # Note that the quotation marks are necessary here to avoid YAML interpreting this as a float and conflating versions.
+  # See here: https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#package-section
+  version: "0.2.0"
+
+source:
+# This doesn't seem to need quotation marks it seems: https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#source-section
+  git_rev: 0.2.0
+  git_url: https://github.com/tensorly/tensorly.git
+
+requirements:
+# Note that while we specify the version of tensorly above, otherwise we cannot specify the versions of dependencies to use in the YAML file for conda build.
+# To do that one should create a virtual environment whose defining YAML file specifies the correct versions of all of the dependencies.
+  build:
+    - mxnet
+    - numpy
+    - scipy
+  run:
+    - python
+
+test:
+  # See the "Test Requirements" sub-section: https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#test-section
+  # Because mxnet, numpy, and scipy were not specified in the run subsection of the requirements section above, they need to be specified explicitly as requirements now.
+  requires:
+    - mxnet
+    - numpy
+    - scipy
+  # The order these packages are listed here matters. What this does is create a Python script "run_test.py" 'import mxnet; import numpy; import scipy; import tensorly'.
+  # Thus changing the order could lead to things being run like 'import tensorly; import numpy' which will lead to an error.
+  # See the "Python imports" section here: https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#test-section
+  imports:
+    - mxnet
+    - numpy
+    - scipy
+    - tensorly
+
+about:
+  home: https://tensorly.github.io/stable/index.html
+  license: BSD

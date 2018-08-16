@@ -1,0 +1,15 @@
+name: tensorly
+dependencies:
+# To avoid things breaking due to a newer version of Python:
+  - python=3.6.5
+# To avoid things breaking due to a newer version of conda or conda-build:
+  - conda=4.5.0
+  - conda-build=3.7.2
+# To avoid things breaking due to newer versions of tensorly's core dependencies:
+  - mxnet=1.0.0
+  - numpy=1.13.3
+  - scipy=1.0.1
+# Makes sure that Jupyter Notebook is aware of your new virtual environment, thus making sure tensorly tutorials can be completed without headaches.
+# See here: https://docs.anaconda.com/anaconda/user-guide/tasks/use-jupyter-notebook-extensions#notebook-conda-kernels
+  - nb_conda=2.2.1
+# Strictly speaking nb_conda is optional for running tensorly.
