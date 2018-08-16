@@ -1,0 +1,7 @@
+The base URL for the JupyterHub instance is:
+
+http://localhost:8000/hub/
+
+Notice the hub suffix. The base URL is NOT just http://localhost:8000/hub, I repeat, it is NOT that.
+
+If you try to use that with your HTTP requests, you will not get the desired or expected behavior.
