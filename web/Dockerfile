@@ -4,7 +4,7 @@ LABEL maintainer="William Krinsman <williamkrinsman@lbl.gov>"
 # JupyterHub components
 
 RUN \
-    pip install git+https://github.com/krinsman/sshspawner.git
+    pip install git+https://github.com/NERSC/sshspawner.git@named-servers
 
 # Dummy user
 
