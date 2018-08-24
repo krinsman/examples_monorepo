@@ -55,8 +55,8 @@ WORKDIR /tmp
 ARG CACHEBUST=1
 RUN \
     npm install -g configurable-http-proxy                                            &&  \
-    git clone https://github.com/krinsman/jupyterhub.git                              && \
-    cd jupyterhub                                                                     &&  \
+    git clone https://gitlab.com/krinsman/multiserverpage.git                              && \
+    cd multiserverpage                                                                     &&  \
     /opt/anaconda3/bin/python setup.py js                                             &&  \
     /opt/anaconda3/bin/pip install .                                                  &&  \
     cp examples/cull-idle/cull_idle_servers.py /opt/anaconda3/bin/.                   &&  \
