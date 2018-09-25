@@ -18,7 +18,9 @@ To exit the container, type `exit`. To restart the container, run `restart-conta
 7. Now let's follow the set-up information from the Bioconda website, _with one small twist_. First\*\*\*\* run `conda config --env --add channels defaults`, then run `conda config --env --add channels bioconda`, and finally run `conda config --env --add channels conda-forge`. The important difference to note with the instructions on the Bioconda website is the extra `--env` flag. This tells conda to apply the operation _to the active environment only_ -- without this flag the operation would be applied to the base environment (which by best practice should be kept as pristine and unchanged as possible). Since we ran `conda activate bioconda` above, the active environment is (should be) `bioconda`, so these changes to the channels will only apply to that environment.
 8. Now that our conda channels are configured correctly, we can now install all the R and Bioconductor packages we want with impunity. Run
 
+    ```
     conda install r-base r-irkernel jupyter bioconductor-biobase bioconductor-biocinstaller
+    ```
 
 This installs R, the R kernel for Jupyter notebook, Jupyter notebook, and the base Bioconductor packages _inside of the `bioconda` environment_ in your container. In particular, even inside of the container they won't be available outside of the `bioconda` environment (i.e. they won't mess anything outside of your environment up in case something goes wrong). (Note that inside `demo-complete` I also install the major Tidyverse packages for you. For the purposes of the in class demo I omitted that step so as to speed up the installation of everything.) Look at all of the packages it installs for you -- conda takes care of all of the messy work of dependency tracking for you, even installing the necessary Fortran compiler. This also makes your work reproducible in a way it could never be otherwise.
 
