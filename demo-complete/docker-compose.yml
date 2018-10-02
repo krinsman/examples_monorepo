@@ -1,7 +1,7 @@
 version: "3"
 services:
     biocondademo:
-        image: biocondademo
+        image: demo-complete
         ports:
             - 8888:8888
         tty: true

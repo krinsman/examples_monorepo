@@ -1,3 +1,15 @@
+# Links
+
+[**Miniconda Download Page**](https://conda.io/miniconda.html)
+
+[**Bioconda Website**](https://bioconda.github.io/)
+
+## FAQ About Conda
+
+[Excellent article I've actually read](https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/)
+
+[Looks good but I haven't read for it and can't personally vouch](https://medium.com/m/global-identity?redirectUrl=https%3A%2F%2Fmedium.freecodecamp.org%2Fwhy-you-need-python-environments-and-how-to-manage-them-with-conda-85f155f4353c)
+
 # Using the containers
 (Zeroth, you need to have Docker installed and running for any of the below to work.)
 
