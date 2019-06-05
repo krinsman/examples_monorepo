@@ -1,5 +1,6 @@
 FROM ubuntu:16.04
-LABEL maintainer="Rollin Thomas <rcthomas@lbl.gov>, William Krinsman <krinsman@berkeley.edu>"
+LABEL maintainer="William Krinsman <krinsman@berkeley.edu>"
+
 
 # Base Ubuntu packages
 
@@ -30,6 +31,7 @@ RUN \
     echo $TZ > /etc/timezone
 
 # Python 3 Miniconda and dependencies for JupyterHub we can get via conda
+
 
 RUN \
     curl -s -o /tmp/miniconda3.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh    &&  \
@@ -72,9 +74,10 @@ RUN \
 
 ENV PATH=/opt/anaconda3/bin:$PATH
 WORKDIR /tmp
+ARG repository
+ARG branch
 RUN \
-    git clone https://github.com/krinsman/nbviewer.git			    &&  \
-#    git clone https://github.com/jupyter/nbviewer.git			    &&  \
+    git clone --single-branch --branch $branch https://github.com/$repository/nbviewer.git		    &&  \
     cd nbviewer								    &&  \
     pip install -r requirements.txt					    &&  \
     npm install	   							    &&  \
