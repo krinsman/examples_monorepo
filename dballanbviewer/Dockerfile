@@ -13,3 +13,8 @@ RUN \
     # want to use this with JupyterLab + JupyterHub, not just classic notebook servers
     conda install jupyterlab --yes     	 	     	      	      	       &&  \
     jupyter labextension install @jupyterlab/hub-extension
+
+WORKDIR  /srv
+RUN \
+    rm jupyterhub_config.py
+ADD jupyterhub_config.py .
