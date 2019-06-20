@@ -5,7 +5,9 @@ c.JupyterHub.services = [
         # the interface and port nbviewer will use
         'url': 'http://127.0.0.1:9000',
         # command to start the nbviewer
-        'command': ['python', '-m', 'nbviewer', '--localfiles=/', '--clone-notebooks',
+        'command': ['python', '-m', 'nbviewer',
+                        '--localfiles=/tmp/nbviewer/notebook-5.7.8/tools/tests',
+                        '--clone-notebooks',
                         '--template-path=/media/templates',
                         '--local_handler=clonenotebooks.renderers.LocalRenderingHandler',
                         '--url_handler=clonenotebooks.renderers.URLRenderingHandler',
