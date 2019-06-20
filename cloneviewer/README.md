@@ -1,5 +1,16 @@
-**Note:** most of this is largely borrowed from the setup created by Rollin Thomas, Shane
-  Canon, Kelly Rowland, and Shreyas Cholia at [NERSC](https://github.com/NERSC/jupyterhub-deploy).
+**Note:** creating the JupyterHub setup in a Docker container largely borrowed from the setup created by Rollin Thomas, Shane
+  Canon, Kelly Rowland, and Shreyas Cholia at
+  [NERSC](https://github.com/NERSC/jupyterhub-deploy). 
+
+To create the docker container image, just run
+
+```chmod +x build.sh```
+
+in this directory then do
+
+```./build.sh```
+
+(if you are on a Unix system).
 
 To run the container, do
 

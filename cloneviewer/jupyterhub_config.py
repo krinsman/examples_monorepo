@@ -4,10 +4,13 @@ c.JupyterHub.services = [
         'name': 'nbviewer',
         # the interface and port nbviewer will use
         'url': 'http://127.0.0.1:9000',
-        # the path to nbviewer repo
-        #'cwd': '/tmp/nbviewer',
         # command to start the nbviewer
-        'command': ['python', '-m', 'nbviewer', '--localfiles=/', '--no-cache', '--clone-notebooks']
+        'command': ['python', '-m', 'nbviewer', '--localfiles=/', '--clone-notebooks',
+                        '--template-path=/media/templates',
+                        '--local_handler=clonenotebooks.renderers.LocalRenderingHandler',
+                        '--url_handler=clonenotebooks.renderers.URLRenderingHandler',
+                        '--github_blob_handler=clonenotebooks.renderers.GitHubBlobRenderingHandler',
+                        '--gist_handler=clonenotebooks.renderers.GistRenderingHandler']
     }
 ]
 
@@ -19,4 +22,3 @@ c.JupyterHub.hub_ip = '0.0.0.0'
 c.Spawner.default_url = '/lab'
 # also advice here: https://github.com/jupyterhub/jupyterlab-hub
 c.Spawner.cmd = ['jupyter-labhub']
-
