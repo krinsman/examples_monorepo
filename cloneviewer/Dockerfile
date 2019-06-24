@@ -23,3 +23,4 @@ WORKDIR /srv
 RUN \
     rm jupyterhub_config.py
 ADD jupyterhub_config.py .
+ADD nbviewer_config.py .
