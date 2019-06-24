@@ -7,12 +7,7 @@ c.JupyterHub.services = [
         # command to start the nbviewer
         'command': ['python', '-m', 'nbviewer',
                         '--localfiles=/tmp/nbviewer/notebook-5.7.8/tools/tests',
-                        '--clone-notebooks',
-                        '--template-path=/media/templates',
-                        '--local_handler=clonenotebooks.renderers.LocalRenderingHandler',
-                        '--url_handler=clonenotebooks.renderers.URLRenderingHandler',
-                        '--github_blob_handler=clonenotebooks.renderers.GitHubBlobRenderingHandler',
-                        '--gist_handler=clonenotebooks.renderers.GistRenderingHandler']
+                        '--template-path=/media/templates']
     }
 ]
 
