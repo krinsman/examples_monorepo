@@ -15,10 +15,6 @@ RUN \
     conda install jupyterlab --yes     	 	     	      	      	       &&  \
     jupyter labextension install @jupyterlab/hub-extension
 
-WORKDIR /media
-RUN mkdir templates
-ADD templates ./templates
-
 WORKDIR /srv
 RUN \
     rm jupyterhub_config.py
