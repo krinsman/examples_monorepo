@@ -3,8 +3,8 @@ LABEL maintainer="William Krinsman <krinsman@berkeley.edu>"
 
 WORKDIR /tmp
 RUN \
-    git clone https://github.com/krinsman/notebook-clone-extension.git		&&  \
-    cd notebook-clone-extension							&&  \
+    git clone https://github.com/krinsman/clonenotebooks.git			&&  \
+    cd clonenotebooks								&&  \
     pip install -e .								&&  \
     jupyter serverextension enable clonenotebooks.cloners --sys-prefix 		&&  \
     cd ../nbviewer	    	   			    		 	&&  \
