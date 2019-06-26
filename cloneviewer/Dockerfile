@@ -1,6 +1,19 @@
-FROM jupyter:cloneviewer-intermediate
+FROM jupyter:labhub
 LABEL maintainer="William Krinsman <krinsman@berkeley.edu>"
 
+# Install nbviewer
+WORKDIR /tmp
+ARG repository
+ARG branch
+RUN \
+    git clone --single-branch --branch $branch https://github.com/$repository/nbviewer.git		    &&  \
+    cd nbviewer								    				    &&  \
+    pip install -r requirements.txt					    				    &&  \
+    npm install	   							    				    &&  \
+    invoke bower							    				    &&  \
+    invoke less
+
+# Install notebook cloning extension
 WORKDIR /tmp
 RUN \
     git clone https://github.com/krinsman/clonenotebooks.git			&&  \
@@ -10,13 +23,7 @@ RUN \
     cd ../nbviewer	    	   			    		 	&&  \
     pip install -e .			
 
-RUN \
-    # want to use this with JupyterLab + JupyterHub, not just classic notebook servers
-    conda install jupyterlab --yes     	 	     	      	      	       &&  \
-    jupyter labextension install @jupyterlab/hub-extension
-
+# Add necessary config files
 WORKDIR /srv
-RUN \
-    rm jupyterhub_config.py
 ADD jupyterhub_config.py .
 ADD nbviewer_config.py .
