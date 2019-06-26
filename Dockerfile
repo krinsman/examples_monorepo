@@ -71,7 +71,7 @@ RUN \
 	statsd																		\
 	newrelic																        \
 	jupyterlab																    &&  \
-    jupyter labextension install @jupyterlab/hub-extension
+    jupyter labextension install @jupyterlab/hub-extension --clean
 
 # add some dummy users
 RUN \

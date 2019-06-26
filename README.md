@@ -32,4 +32,4 @@ and at the log in screen, either do: **user:** `william` **password:**
 `hi`, or **user:** `krinsman` **password:** `bye`.
 
 The only difference
-is that `krinsman` is a JupyterHub admin but `william` is not.
+is that `krinsman` is a JupyterHub admin in most of the child images but `william` is not.
