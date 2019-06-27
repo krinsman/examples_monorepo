@@ -71,7 +71,8 @@ RUN \
 	statsd																		\
 	newrelic																        \
 	jupyterlab																    &&  \
-    jupyter labextension install @jupyterlab/hub-extension --clean
+    jupyter labextension install @jupyterlab/hub-extension --clean --no-build                                                                       &&  \
+    rm -rf /tmp/npm*/
 
 # add some dummy users
 RUN \

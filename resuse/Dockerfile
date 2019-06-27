@@ -14,7 +14,8 @@ RUN \
     jupyter serverextension enable jupyterlab_resuse --sys-prefix &&  \
     jlpm install 	    	   		     		  &&  \
     jlpm run build						  &&  \
-    jupyter labextension install . --clean
+    jupyter labextension install . --clean                        &&  \
+    rm -rf /tmp/npm*/ /tmp/v8-compile-cache-0/
 
 # change to directory from which JupyterHub will be run
 WORKDIR /srv
