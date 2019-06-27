@@ -1,6 +1,11 @@
 FROM jupyter:labhub
 LABEL maintainer="William Krinsman <krinsman@berkeley.edu>"
 
+# build JupyterLab since it's not built in base image
+# since other child images have their own JupyterLab extensions they might install
+RUN \
+    jupyter lab build
+
 # Install nbviewer
 WORKDIR /tmp
 ARG repository
