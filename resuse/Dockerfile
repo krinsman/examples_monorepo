@@ -19,3 +19,4 @@ RUN \
 
 # change to directory from which JupyterHub will be run
 WORKDIR /srv
+ADD jupyterhub_config.py .
