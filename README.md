@@ -33,3 +33,5 @@ and at the log in screen, either do: **user:** `william` **password:**
 
 The only difference
 is that `krinsman` is a JupyterHub admin in most of the child images but `william` is not.
+
+**Note:** for those lazy like me, you can add the BASH functions from `useful_functions.sh` to your BASH profile. _After_ you've created the corresponding image, you can create and enter a Docker container with the necessary port forwarding by running `img_init <image_name>`. To re-enter the created container, you have to do `docker exec -it <container_name> bash`. When you decide you're totally done with it, you can stop and remove the container by doing `img_exit <image_name>`. Obviously there are several problems with these shortcuts of course.
