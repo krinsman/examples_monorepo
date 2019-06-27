@@ -1,6 +1,9 @@
 FROM jupyter:labhub
 LABEL maintainer="William Krinsman <krinsman@berkeley.edu>"
 
+RUN \
+    jupyter lab build
+
 # Install nbviewer
 WORKDIR /tmp
 ARG repository
