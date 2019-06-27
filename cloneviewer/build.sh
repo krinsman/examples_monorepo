@@ -12,7 +12,7 @@ fi
 
 docker build                         \
     --no-cache                       \
-    --build-arg branch=master        \
+    --build-arg branch=latest        \
     --build-arg repository=krinsman  \
     --tag jupyter:cloneviewer        \
     .
