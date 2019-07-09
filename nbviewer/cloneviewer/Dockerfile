@@ -1,34 +1,53 @@
-FROM jupyter:labhub
-LABEL maintainer="William Krinsman <krinsman@berkeley.edu>"
+#### WARNING:
+#### This assumes the repository root directory is the Docker build context
 
-# build JupyterLab since it's not built in base image
-# since other child images have their own JupyterLab extensions they might install
-RUN \
-    jupyter lab build
-
-# Install nbviewer
-WORKDIR /tmp
-ARG repository
-ARG branch
-RUN \
-    git clone --single-branch --branch $branch https://github.com/$repository/nbviewer.git		    &&  \
-    cd nbviewer								    				    &&  \
-    pip install -r requirements.txt					    				    &&  \
-    npm install	   							    				    &&  \
-    invoke bower							    				    &&  \
-    invoke less
+FROM nbviewer_base as cloneviewer_base
+LABEL maintainer="William Krinsman <krinsman@berkeley.edy>"
+LABEL autodelete="true"
 
 # Install notebook cloning extension
 WORKDIR /tmp
 RUN \
-    git clone https://github.com/krinsman/clonenotebooks.git			&&  \
-    cd clonenotebooks								&&  \
-    pip install -e .								&&  \
-    jupyter serverextension enable clonenotebooks.cloners --sys-prefix 		&&  \
-    cd ../nbviewer	    	   			    		 	&&  \
-    pip install -e .			
+    git clone https://github.com/krinsman/clonenotebooks.git /repos/clonenotebooks	&&  \
+    cd /repos/clonenotebooks								&&  \
+    pip install -e . --no-cache-dir							&&  \
+    jupyter serverextension enable clonenotebooks.cloners --sys-prefix
+
+#### FINAL IMAGE
+
+FROM ubuntu:bionic
+LABEL maintainer="William Krinsman <krinsman@berkeley.edu>"
+
+COPY --from=cloneviewer_base /repos /repos
+COPY --from=cloneviewer_base /opt /opt
+
+ENV PATH=/opt/anaconda3/bin:$PATH  \
+    DEBIAN_FRONTEND=noninteractive \
+    LANG=C.UTF-8  		   \
+#
+# Timezone to Berkeley
+#
+    TZ=America/Los_Angeles
+RUN \
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime  &&  \
+    echo $TZ > /etc/timezone
+
+WORKDIR /tmp
+ADD utils.sh .
+RUN \
+    chmod +x utils.sh			&&  \
+#
+# Install utils
+#
+    ./utils.sh apt_install		    \
+    vim	       				    \
+    git					&&  \
+# Add dummy users
+    ./utils.sh add_users		&&  \
+# Clean up after ourselves
+    rm -rf /tmp/*
 
 # Add necessary config files
-WORKDIR /srv
-ADD jupyterhub_config.py .
-ADD nbviewer_config.py .
+WORKDIR  /srv
+ADD nbviewer/cloneviewer/jupyterhub_config.py .
+ADD nbviewer/cloneviewer/nbviewer_config.py   .
