@@ -10,9 +10,10 @@ if ! docker inspect "$dockerImage" &> /dev/null; then
 	   ..
 fi
 
-docker build                                 \
-     --no-cache                              \
-     --build-arg branch=copy-to-user-server  \
-     --build-arg repository=danielballan     \
-     --tag jupyter:dballanbviewer            \
-     .
+docker build                         \
+    --no-cache                       \
+    --force-rm                       \
+    --build-arg branch=latest        \
+    --build-arg repository=krinsman  \
+    --tag jupyter:cloneviewer        \
+    .

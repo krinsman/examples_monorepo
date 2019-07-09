@@ -11,6 +11,7 @@ chmod +x useful_functions.sh
 
 docker build                         \
        --file=resuse/Dockerfile      \
+       --force-rm                    \
        --no-cache                    \
        --tag resuse                  \
        .

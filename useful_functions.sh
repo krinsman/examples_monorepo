@@ -15,6 +15,7 @@ if_not_base_image_then_build_it() {
     if ! docker inspect "$baseDockerImage" &> /dev/null; then
 	docker build                   \
                --file=Dockerfile       \
+               --force-rm              \
 	       --tag $baseDockerImage  \
 	       .
     fi
@@ -23,7 +24,7 @@ if_not_base_image_then_build_it() {
 # Delete all intermediate images with label autodelete=true
 destroy_intermediates() {
     # From: https://github.com/moby/moby/issues/34151#issuecomment-478802490
-    list=$(docker images -q -f "dangling=true" -f "label=autodelete=true")
+    list=$(docker images -q -f "label=autodelete=true")
     if [ -n "$list" ]; then
 	docker rmi $list
     fi
