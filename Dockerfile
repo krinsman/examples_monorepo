@@ -13,7 +13,7 @@ RUN \
 
 WORKDIR /tmp
 
-ADD utils.sh utils.sh
+ADD utils.sh .
 RUN \
     chmod +x utils.sh				    &&  \
 #
@@ -44,9 +44,9 @@ RUN \
 #
 # add dummy users
 #
-    ./utils.sh addusers										      &&  \
+    ./utils.sh add_users										      &&  \
 #
-# cleanup after ourselves
+# Clean up after ourselves
 #
     rm -rf *
     
@@ -63,6 +63,8 @@ RUN \
     jupyter labextension install @jupyterlab/hub-extension@0.12.0 --clean --no-build	&&  \
     jupyter lab clean	 	 			   	   			&&  \
     jlpm cache clean									&&  \
-    npm cache clean --force							
+    npm cache clean --force								&&  \
+# Clean up after ourselves
+    rm -rf *
 
 WORKDIR /srv

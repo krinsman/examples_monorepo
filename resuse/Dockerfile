@@ -17,50 +17,51 @@ RUN \
 #
 # install jupyterlab_resuse
 #
-     git clone https://github.com/krinsman/jupyterlab_resuse.git /repos/jupyterlab_resuse   &&  \
-     cd /repos/jupyterlab_resuse					  	            &&  \
-     pip install -e . --no-cache-dir
-
-WORKDIR /tmp
-RUN \
-     jupyter serverextension enable jupyterlab_resuse --sys-prefix 			    &&  \
-     (cd /repos/jupyterlab_resuse   		      					    &&  \
-     jlpm install 	    	   		     		  			    &&  \
-     jlpm run build						  			    &&  \
-     jupyter labextension install . --clean)   						    &&  \
-     jupyter lab clean									    &&  \
-     jlpm cache clean									    &&  \
-     npm cache clean --force								    &&  \
-#
-# cleanup after ourselves
-#
-    rm -rf *
+    git clone https://github.com/krinsman/jupyterlab_resuse.git /repos/jupyterlab_resuse   &&  \
+    cd /repos/jupyterlab_resuse					  	            &&  \
+    pip install -e . --no-cache-dir							    &&  \
+    jupyter serverextension enable jupyterlab_resuse --sys-prefix 			    &&  \
+    cd /repos/jupyterlab_resuse   		      					    &&  \
+    jlpm install 	    	   		     		  			    &&  \
+    jlpm run build						  			    &&  \
+    jupyter labextension install . --clean   						    &&  \
+    jupyter lab clean									    &&  \
+    jlpm cache clean									    &&  \
+    npm cache clean --force								    
 
 #### FINAL IMAGE
 
-FROM ubuntu:bionic AS resuse
+FROM ubuntu:bionic
 LABEL maintainer="William Krinsman <krinsman@berkeley.edu>"
 
 COPY --from=resuse_base /repos /repos
 COPY --from=resuse_base /opt   /opt
 
-ENV PATH=/opt/anaconda3/bin:$PATH  DEBIAN_FRONTEND=noninteractive  LANG=C.UTF-8  \
+ENV PATH=/opt/anaconda3/bin:$PATH  \
+    DEBIAN_FRONTEND=noninteractive \
+    LANG=C.UTF-8  		   \
 #
 # Timezone to Berkeley
 #
-TZ=America/Los_Angeles
+    TZ=America/Los_Angeles
 RUN \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime  &&  \
     echo $TZ > /etc/timezone
 
 WORKDIR /tmp
-ADD utils.sh utils.sh
+ADD utils.sh .
 RUN \
     chmod +x utils.sh	    &&  \
+#
+# Install utils
     ./utils.sh apt_install	\
     git				\
     vim 		    &&  \
-    ./utils.sh addusers
+#
+# Add dummy users
+    ./utils.sh add_users    &&  \
+# Clean up after ourselves
+    rm -rf /tmp/*
 
 # change to directory from which JupyterHub will be run
 WORKDIR /srv

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-addusers() {
+add_users() {
 
     # add some dummy users
 
