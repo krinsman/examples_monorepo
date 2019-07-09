@@ -1,0 +1,6 @@
+name: base
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - psutil=5.6.3=py37h516909a_0

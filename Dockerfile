@@ -1,84 +1,68 @@
-FROM ubuntu:16.04
+# most recent LTS at time this Dockerfile was written
+FROM ubuntu:bionic
 LABEL maintainer="William Krinsman <krinsman@berkeley.edu>"
 
-# Base Ubuntu packages
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG C.UTF-8
-
-RUN \
-    apt-get update		  &&  \
-    apt-get --yes upgrade   	  &&  \
-    apt-get --yes install	      \
-        bzip2			      \
-        curl			      \
-        git                           \
-        libffi-dev                    \
-        lsb-release                   \
-        tzdata                        \
-        vim                           \
-        wget		 	      \
-	libmemcached-dev	      \
-	libcurl4-openssl-dev	      \
-	libevent-dev
 
 # Timezone to Berkeley
 ENV TZ=America/Los_Angeles
 RUN \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime  &&  \
-    echo $TZ > /etc/timezone
+    echo $TZ > /etc/timezone	    		    
 
-# Install Miniconda
+WORKDIR /tmp
+
+ADD utils.sh utils.sh
 RUN \
-    curl -s -o /tmp/miniconda3.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh    &&  \
-    bash /tmp/miniconda3.sh -f -b -p /opt/anaconda3							   &&  \
-    rm -rf /tmp/miniconda3.sh										   &&  \
-    echo "python 3.7.*" >> /opt/anaconda3/conda-meta/pinned
-
+    chmod +x utils.sh				    &&  \
+#
+# Base Ubuntu packages
+#
+    ./utils.sh apt_install     			    	\
+    bzip2	 					\
+    curl						\
+    # this will fail without ca-certificates
+    # because of the --no-install-recommends flag
+    ca-certificates					\
+    libffi-dev						\
+    lsb-release						\
+    tzdata						\
+    wget					    &&  \
+#
+# Clone repos to non-temp folder so we can edit them later
+#
+    mkdir /repos				    &&  \
+#
+# Install Miniconda
+#
+    curl -s -o miniconda3.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh    &&  \
+    bash miniconda3.sh -f -b -p /opt/anaconda3							      &&  \
+    echo "python 3.7.*" >> /opt/anaconda3/conda-meta/pinned					      &&  \
+    /opt/anaconda3/bin/conda clean --all --yes							      &&  \
+    rm -rf /opt/anaconda3/pkgs/*   	 							      &&  \
+#
+# add dummy users
+#
+    ./utils.sh addusers										      &&  \
+#
+# cleanup after ourselves
+#
+    rm -rf *
+    
+# Use conda to install packages
 ENV PATH=/opt/anaconda3/bin:$PATH
 
-# Use conda to install packages
-RUN \
-    conda update --yes conda															    &&  \
-    conda config --add channels conda-forge													    &&  \
-    conda install --yes																	\
-        alembic																		\
-        cryptography    																\
-        decorator																	\
-        entrypoints     																\
-        jinja2          																\
-        mako            																\
-        markupsafe      																\
-        nodejs          																\
-        oauthlib=2      																\
-        pamela																		\
-        psycopg2        																\
-        pyopenssl																	\
-        python-dateutil 																\
-        python-editor   																\
-        sqlalchemy      																\
-        tornado																		\
-        traitlets																	\
-	jupyter																		\
-	nbconvert																	\
-	pycurl																		\
-	setuptools																	\
-	markdown																	\
-	pandoc																		\
-	invoke																		\
-	elasticsearch																	\
-	jupyterhub																	\
-	pylibmc																		\
-	statsd																		\
-	newrelic																        \
-	jupyterlab																    &&  \
-    jupyter labextension install @jupyterlab/hub-extension --clean --no-build                                                                       &&  \
-    rm -rf /tmp/npm*/
+ADD environment.yml .
 
-# add some dummy users
 RUN \
-    adduser -q --gecos "" --disabled-password william			&&  \
-    echo william:hi   | chpasswd
-    
-RUN \
-    adduser -q --gecos "" --disabled-password krinsman			&&  \
-    echo krinsman:bye | chpasswd
+    conda config --add channels conda-forge						&&  \
+    conda env update --name base --file environment.yml					&&  \
+    conda clean --all --yes								&&  \
+    rm -rf /opt/anaconda3/pkgs/*							&&  \
+    jupyter labextension install @jupyterlab/hub-extension@0.12.0 --clean --no-build	&&  \
+    jupyter lab clean	 	 			   	   			&&  \
+    jlpm cache clean									&&  \
+    npm cache clean --force							
+
+WORKDIR /srv
