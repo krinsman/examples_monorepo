@@ -5,22 +5,24 @@ FROM jupyter:labhub AS nbviewer_base
 LABEL maintainer="William Krinsman <krinsman@berkeley.edu"
 LABEL autodelete="true"
 
+ARG imageUtils=./utils.sh
+
 # Build arguments for installing nbviewer
 ARG repository
 ARG branch
 
 WORKDIR /tmp
-ADD utils.sh .
+ADD $imageUtils .
 ADD nbviewer/environment.yml .
 
 RUN \
-    chmod +x utils.sh											    &&  \
+    chmod +x $imageUtils										    &&  \
 # LabHub extension wasn't built in jupyter:labhub
     jupyter lab build											    &&  \
 #
 # Install nbviewer dependencies
 #
-    ./utils.sh apt_install											\
+    $imageUtils apt_install											\
     libmemcached-dev												\
     libcurl4-openssl-dev											\
     libevent-dev											    &&  \

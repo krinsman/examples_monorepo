@@ -21,6 +21,11 @@ if_not_base_image_then_build_it() {
     fi
 }
 
+# avoid mistakes from typing out the same flags in every build script
+smart_build () {
+    docker build --force-rm --no-cache $@
+}
+
 # Delete all intermediate images with label autodelete=true
 destroy_intermediates() {
     # From: https://github.com/moby/moby/issues/34151#issuecomment-478802490

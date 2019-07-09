@@ -4,6 +4,8 @@
 FROM ubuntu:bionic
 LABEL maintainer="William Krinsman <krinsman@berkeley.edu>"
 
+ARG imageUtils=./utils.sh
+
 COPY --from=nbviewer_base /repos /repos
 COPY --from=nbviewer_base /opt /opt
 
@@ -19,19 +21,19 @@ RUN \
     echo $TZ > /etc/timezone
 
 WORKDIR /tmp
-ADD utils.sh .
+ADD $imageUtils .
 RUN \
-    chmod +x utils.sh			&&  \
+    chmod +x $imageUtils		&&  \
 #
 # Install utils
 #
-    ./utils.sh apt_install		    \
+    $imageUtils apt_install		    \
     vim	       				    \
 # needed for git push to work
     ca-certificates                         \
     git					&&  \
 # Add dummy users
-    ./utils.sh add_users		&&  \
+    $imageUtils add_users		&&  \
 # Clean up after ourselves
     rm -rf /tmp/*
 

@@ -2,6 +2,8 @@
 FROM ubuntu:bionic
 LABEL maintainer="William Krinsman <krinsman@berkeley.edu>"
 
+ARG imageUtils=./utils.sh
+
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG C.UTF-8
 
@@ -13,13 +15,13 @@ RUN \
 
 WORKDIR /tmp
 
-ADD utils.sh .
+ADD $imageUtils .
 RUN \
-    chmod +x utils.sh				    &&  \
+    chmod +x $imageUtils				    &&  \
 #
 # Base Ubuntu packages
 #
-    ./utils.sh apt_install     			    	\
+    $imageUtils apt_install    			    	\
     bzip2	 					\
     curl						\
     # this will fail without ca-certificates
@@ -44,7 +46,7 @@ RUN \
 #
 # add dummy users
 #
-    ./utils.sh add_users										      &&  \
+    $imageUtils add_users									      &&  \
 #
 # Clean up after ourselves
 #
