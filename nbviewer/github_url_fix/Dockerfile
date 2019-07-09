@@ -27,6 +27,8 @@ RUN \
 #
     ./utils.sh apt_install		    \
     vim	       				    \
+# needed for git push to work
+    ca-certificates                         \
     git					&&  \
 # Add dummy users
     ./utils.sh add_users		&&  \

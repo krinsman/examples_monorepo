@@ -55,6 +55,8 @@ RUN \
 #
 # Install utils
     ./utils.sh apt_install	\
+# needed for git push to work
+    ca-certificates             \
     git				\
     vim 		    &&  \
 #
