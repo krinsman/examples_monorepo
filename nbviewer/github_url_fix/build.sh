@@ -1,8 +1,7 @@
 #!/bin/bash
 
-export repositoryRoot=../..
-
 # Make Docker build context the repository root
+export repositoryRoot=../..
 cd $repositoryRoot
 
 # If it wasn't executable before... it is now
