@@ -5,6 +5,7 @@ FROM ubuntu:bionic
 LABEL maintainer="William Krinsman <krinsman@berkeley.edu>"
 
 ARG imageUtils=./utils.sh
+ARG branch
 
 COPY --from=nbviewer_base /repos /repos
 COPY --from=nbviewer_base /opt /opt
@@ -39,4 +40,4 @@ RUN \
 
 # Change to directory from which JupyterHub will be run and add necessary config files
 WORKDIR /srv
-ADD nbviewer/master/jupyterhub_config.py .
+ADD nbviewer/$branch/jupyterhub_config.py .
