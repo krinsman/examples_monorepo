@@ -1,0 +1,1 @@
+c.ResourceUseDisplay.mem_limit_calculator='jupyterlab_resuse.mem_limit_calculator'

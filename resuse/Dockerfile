@@ -15,16 +15,23 @@ RUN \
     conda clean --all --yes								    &&  \
     rm -rf /opt/anaconda3/pkgs/*							    &&  \
 #
-# install jupyterlab_resuse
+# install nbresuse, jupyterlab_resuse, topbar extensions
 #
-    git clone https://github.com/krinsman/jupyterlab_resuse.git /repos/jupyterlab_resuse   &&  \
-    cd /repos/jupyterlab_resuse					  	            &&  \
+    git clone https://github.com/krinsman/nbresuse.git /repos/nbresuse			    &&  \
+    cd /repos/nbresuse									    && \
     pip install -e . --no-cache-dir							    &&  \
-    jupyter serverextension enable jupyterlab_resuse --sys-prefix 			    &&  \
-    cd /repos/jupyterlab_resuse   		      					    &&  \
+    jupyter serverextension enable --py nbresuse --sys-prefix				    &&  \
+    jupyter nbextension install --py nbresuse --sys-prefix				    &&  \
+    jupyter nbextension enable --py nbresuse --sys-prefix				    &&  \
+    cd /tmp										    &&  \
+    git clone https://github.com/krinsman/jupyterlab_resuse.git /repos/jupyterlab_resuse    &&  \
+    cd /repos/jupyterlab_resuse					  	            	    &&  \
+    pip install -e . --no-cache-dir							    &&  \
     jlpm install 	    	   		     		  			    &&  \
     jlpm run build						  			    &&  \
-    jupyter labextension install . --clean   						    &&  \
+    jupyter labextension install . --clean --no-build					    &&  \
+    jupyter labextension install jupyterlab-topbar-extension --clean --no-build  	    &&  \
+    jupyter labextension install jupyterlab-system-monitor --clean   			    &&  \
     jupyter lab clean									    &&  \
     jlpm cache clean									    &&  \
     npm cache clean --force								    
@@ -68,8 +75,10 @@ RUN \
 # Add dummy users
     $imageUtils add_users   &&  \
 # Clean up after ourselves
-    rm -rf /tmp/*           &&  \
+    rm -rf /tmp/*          
 
 # change to directory from which JupyterHub will be run
 WORKDIR /srv
 ADD resuse/jupyterhub_config.py .
+# Give nbresuse custom memory limit calculator function to use
+ADD resuse/jupyter_notebook_config.py /opt/anaconda3/etc/jupyter/jupyter_notebook_config.py

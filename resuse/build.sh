@@ -13,7 +13,7 @@ $buildUtils if_not_base_image_then_build_it
 
 $buildUtils smart_build         \
        --file=resuse/Dockerfile \
-       --tag resuse             \
+       --tag jupyter:resuse     \
        .
 
 # Delete all intermediate images with label autodelete=true

@@ -62,7 +62,7 @@ RUN \
     conda env update --name base --file environment.yml					&&  \
     conda clean --all --yes								&&  \
     rm -rf /opt/anaconda3/pkgs/*							&&  \
-    jupyter labextension install @jupyterlab/hub-extension@0.12.0 --clean --no-build	&&  \
+#    jupyter labextension install @jupyterlab/hub-extension@0.12.0 --clean --no-build	&&  \
     jupyter lab clean	 	 			   	   			&&  \
     jlpm cache clean									&&  \
     npm cache clean --force								&&  \
