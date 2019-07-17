@@ -14,6 +14,7 @@ COPY ./weak_pinned_environment.yml ./environment.yml
 # get tomopy software files from GitHub
 RUN apt-get install git ca-certificates --yes --no-install-recommends     &&  \
     apt-get clean --yes			      				  &&  \
+    git clone https://github.com/krinsman/jupyterhub-deploy.git           &&  \
     git clone https://github.com/tomopy/tomopy.git /repos/tomopy	  &&  \
     cd /repos/tomopy							  &&  \
     git checkout b5789d52ab4bf0818fd2632b891e5a9c5180af51
