@@ -13,7 +13,7 @@ $buildUtils if_not_base_image_then_build_it
 
 $buildUtils smart_build                     \
     --file=nbviewer/Dockerfile              \
-    --build-arg branch=latest               \
+    --build-arg branch=step6                \
     --build-arg repository=krinsman         \
     --tag nbviewer_base                     \
     .

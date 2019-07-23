@@ -1,7 +1,7 @@
 name: base
 channels:
-  - jrmadsen
   - conda-forge
+  - jrmadsen
   - defaults
 dependencies:
   - conda=4.7.5=py37_0
@@ -11,7 +11,7 @@ dependencies:
   - git=2.22.0=pl526hce37bd2_0
   - gxx_linux-64=7.3.0=h553295d_7
   - h5py=2.9.0=nompi_py37hf008753_1102
-  - jupyter=1.0.0=py37_7
+  - jupyterlab=1.0.2=py37_0
   - libgcc-ng=9.1.0=hdf63c60_0
   - libstdcxx-ng=9.1.0=hdf63c60_0
   - mkl=2019.4=243

@@ -24,7 +24,7 @@ COPY --from=dballanbviewer_base /repos /repos
 COPY --from=dballanbviewer_base /opt /opt
 # Need to copy this for conda config settings to transfer, e.g. conda-forge as main channel
 # because I was too lazy to create another user besides root for the settings to go with
-COPY --from=resuse_base /root /root
+COPY --from=dballanbviewer_base /root /root
 
 ENV PATH=/opt/anaconda3/bin:$PATH  \
     DEBIAN_FRONTEND=noninteractive \

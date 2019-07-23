@@ -18,7 +18,9 @@ RUN apt-get install git ca-certificates --yes --no-install-recommends     &&  \
     cd /repos/tomopy							  &&  \
     git checkout b5789d52ab4bf0818fd2632b891e5a9c5180af51
 # Install all necessary packages from conda
-RUN conda env update --name base --file /tmp/environment.yml		  &&  \
+RUN conda config --add channels jrmadsen				  &&  \
+    conda config --add channels conda-forge				  &&  \
+    conda env update --name base --file /tmp/environment.yml		  &&  \
     conda clean --all --yes -f						  &&  \
     rm -rf /opt/conda/pkgs/*
 
