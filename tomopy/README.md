@@ -4,3 +4,4 @@ After building the image as `tomopy:notebook` (or whatever you want to call it),
 
 Copy the URL it gives you into your browser to run Jupyter notebook.
 
+**Note:** `tomopy832.ipynb` was created by Anu Trivedi. All credit for getting this to work in a Jupyter Notebook belongs to her.

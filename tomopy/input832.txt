@@ -1,0 +1,4 @@
+inputfile1.h5
+inputfile2.h5 
+inputfile3.h5 	cor	1196	sinoused	"-1,10,1"	doPhaseRetrieval	0 outputFilename c1196.0
+inputfile3.h5 	cor	1196.5	sinoused	"-1,10,1"	doPhaseRetrieval	0 outputFilename c1196.5

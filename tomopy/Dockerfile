@@ -48,3 +48,5 @@ RUN rm -rf /tmp/*
 WORKDIR /repos
 # Add notebook
 COPY ./phantom.ipynb ./phantom.ipynb
+COPY ./tomopy832.ipynb ./tomopy832.ipynb
+COPY ./input832.txt ./input832.txt
