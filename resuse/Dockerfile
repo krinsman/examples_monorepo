@@ -26,7 +26,6 @@ RUN \
     cd /tmp										    &&  \
     git clone https://github.com/krinsman/jupyterlab_resuse.git /repos/jupyterlab_resuse    &&  \
     cd /repos/jupyterlab_resuse					  	            	    &&  \
-    pip install -e . --no-cache-dir							    &&  \
     jlpm install 	    	   		     		  			    &&  \
     jlpm run build						  			    &&  \
     jupyter labextension install . --clean --no-build					    &&  \
