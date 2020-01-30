@@ -27,12 +27,12 @@ RUN \
 # Sets the pwd when you enter into the container
 WORKDIR /tmp
 
-# Add the Miniconda install shell script to the docker container
-ADD Miniconda3-latest-Linux-x86_64.sh .
-# Make it executable 
-RUN chmod +x Miniconda3-latest-Linux-x86_64.sh
-# Remember to choose /opt/anaconda as the install directory when 
-# running the install script so that the below steps work.
+# Install conda (via miniconda), clean up, update.
+RUN \
+    wget -q -O /tmp/miniconda3.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh    &&  \
+    bash /tmp/miniconda3.sh -f -b -p /opt/anaconda                     &&  \
+    rm -rf /tmp/miniconda3.sh                                          &&  \
+    /opt/anaconda/bin/conda update --yes conda && conda clean --all --yes
 
 # Add the shell script in the directory to the Docker container
 ADD reproduce.sh .
