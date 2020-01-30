@@ -37,13 +37,13 @@ RUN \
     # Create an alias so that running notebook from the container isn't such a pain.
     echo "alias jupyter=\"jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root\"" >> ~/.bashrc
 # Add YAML file from directory to the Docker container.                       
-ADD environment.yml .
+COPY environment.yml .
 # Create a new conda environment from the YAML file.
 RUN /opt/anaconda/bin/conda env create -f environment.yml
 # Add conda to the path
 ENV PATH=/opt/anaconda/bin:$PATH
 WORKDIR /tmp
 # Add the shell script in the directory to the Docker container
-ADD reproduce.sh .
+COPY reproduce.sh .
 # Make it executable
 RUN chmod +x reproduce.sh

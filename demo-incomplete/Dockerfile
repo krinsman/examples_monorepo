@@ -35,7 +35,7 @@ RUN \
     /opt/anaconda/bin/conda update --yes conda && conda clean --all --yes
 
 # Add the shell script in the directory to the Docker container
-ADD reproduce.sh .
+COPY reproduce.sh .
 # Make it executable
 RUN chmod +x reproduce.sh
 
