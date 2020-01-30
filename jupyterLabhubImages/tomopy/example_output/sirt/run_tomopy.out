@@ -1,0 +1,8 @@
+> [exe] total execution time                             : 1494.015 wall, 1083.540 user +  411.540 system = 1495.080 CPU [sec] (100.1%) : RSS {tot,self}_{curr,peak} : (203.5|357.3) | ( 53.2|177.2) [MB] (x1 laps)
+> [pyc] |_run@'<ipython-input-5-730eafe61498>':4         : 1494.013 wall, 1083.530 user +  411.540 system = 1495.070 CPU [sec] (100.1%) : RSS {tot,self}_{curr,peak} : (203.5|357.3) | ( 53.2|177.2) [MB] (x1 laps)
+> [pyc]   |_generate@'<ipython-input-4-035e5301d56a>':1  :   13.289 wall,   13.270 user +    0.020 system =   13.290 CPU [sec] (100.0%) : RSS {tot,self}_{curr,peak} : (171.2|278.3) | ( 20.8| 98.2) [MB] (x1 laps)
+> [pyc]     |_generate@[tomopy.misc.phantom.shepp2d]     :    0.028 wall,    0.020 user +    0.010 system =    0.030 CPU [sec] (109.0%) : RSS {tot,self}_{curr,peak} : (156.8|186.6) | (  6.5|  6.5) [MB] (x1 laps)
+> [pyc]     |_generate@[tomopy.project]                  :   13.260 wall,   13.250 user +    0.010 system =   13.260 CPU [sec] (100.0%) : RSS {tot,self}_{curr,peak} : (171.0|278.2) | ( 14.2| 91.6) [MB] (x1 laps)
+> [pyc]   |_run@[tomopy.recon(algorithm='sirt')]         : 1479.991 wall, 1069.060 user +  411.470 system = 1480.530 CPU [sec] (100.0%) : RSS {tot,self}_{curr,peak} : (192.1|327.4) | (  9.1| 37.2) [MB] (x1 laps)
+> [pyc]   |_output_images[ndarray]@'benchmark.py':281    :    0.343 wall,    0.500 user +    0.030 system =    0.530 CPU [sec] (154.3%) : RSS {tot,self}_{curr,peak} : (215.3|357.3) | (  5.9| 27.3) [MB] (x4 laps)
+> [pyc]     |_output_image[ndarray]@'benchmark.py':81    :    0.335 wall,    0.500 user +    0.020 system =    0.520 CPU [sec] (155.1%) : RSS {tot,self}_{curr,peak} : (220.8|357.3) | (  5.8| 27.3) [MB] (x4 laps)
