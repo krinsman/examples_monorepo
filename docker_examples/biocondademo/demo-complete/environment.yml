@@ -1,0 +1,12 @@
+name: bioconda
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - jupyter
+  - r-irkernel
+  - r-base
+  - r-tidyverse
+  - bioconductor-biobase
+  - bioconductor-biocinstaller

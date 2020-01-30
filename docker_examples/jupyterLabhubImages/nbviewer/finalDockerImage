@@ -1,0 +1,46 @@
+#### WARNING:
+#### This assumes the repository root directory is the Docker build context
+
+FROM ubuntu:bionic
+LABEL maintainer="William Krinsman <krinsman@berkeley.edu>"
+
+ARG imageUtils=./utils.sh
+ARG branch
+
+COPY --from=nbviewer_base /repos /repos
+COPY --from=nbviewer_base /opt /opt
+# Need to copy this for conda config settings to transfer, e.g. conda-forge as main channel
+# because I was too lazy to create another user besides root for the settings to go with
+COPY --from=nbviewer_base /root /root
+
+ENV PATH=/opt/anaconda3/bin:$PATH  \
+    DEBIAN_FRONTEND=noninteractive \
+    LANG=C.UTF-8  		   \
+#
+# Timezone to Berkeley
+#
+    TZ=America/Los_Angeles
+RUN \
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime  &&  \
+    echo $TZ > /etc/timezone
+
+WORKDIR /tmp
+ADD $imageUtils .
+RUN \
+    chmod +x $imageUtils		&&  \
+#
+# Install utils
+#
+    $imageUtils apt_install		    \
+    vim	       				    \
+# needed for git push to work
+    ca-certificates                         \
+    git					&&  \
+# Add dummy users
+    $imageUtils add_users		&&  \
+# Clean up after ourselves
+    rm -rf /tmp/*
+
+# Change to directory from which JupyterHub will be run and add necessary config files
+WORKDIR /srv
+ADD nbviewer/$branch/jupyterhub_config.py .

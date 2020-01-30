@@ -1,0 +1,304 @@
+{
+"ranks": [
+{
+    "manager": {
+        "cereal_class_version": 1,
+        "concurrency": 1,
+        "self_cost": false,
+        "timers": [
+            {
+                "cereal_class_version": 1,
+                "timer.key": 0,
+                "timer.level": 0,
+                "timer.offset": 0,
+                "timer.tag": "exe_global_time",
+                "timer.ref": {
+                    "cereal_class_version": 1,
+                    "laps": 1,
+                    "user_elapsed": 1083540000,
+                    "system_elapsed": 411540000,
+                    "wall_elapsed": 1494014671,
+                    "cpu_elapsed": 1495080000,
+                    "cpu_util": 1,
+                    "to_seconds_ratio_num": 1,
+                    "to_seconds_ratio_den": 1000000,
+                    "rss_max": {
+                        "cereal_class_version": 0,
+                        "current": 203.49609375,
+                        "peak": 357.32421875
+                    },
+                    "rss_self": {
+                        "current": 53.15234375,
+                        "peak": 177.18359375
+                    },
+                    "rss_min": {
+                        "current": 203.49609375,
+                        "peak": 357.32421875
+                    },
+                    "rss_self_min": {
+                        "current": 53.15234375,
+                        "peak": 177.18359375
+                    }
+                }
+            },
+            {
+                "timer.key": 7697527246531044673,
+                "timer.level": 1,
+                "timer.offset": 1,
+                "timer.tag": "pyc_run@'<ipython-input-5-730eafe61498>':4",
+                "timer.ref": {
+                    "laps": 1,
+                    "user_elapsed": 1083530000,
+                    "system_elapsed": 411540000,
+                    "wall_elapsed": 1494012802,
+                    "cpu_elapsed": 1495070000,
+                    "cpu_util": 1,
+                    "to_seconds_ratio_num": 1,
+                    "to_seconds_ratio_den": 1000000,
+                    "rss_max": {
+                        "current": 203.49609375,
+                        "peak": 357.32421875
+                    },
+                    "rss_self": {
+                        "current": 53.15234375,
+                        "peak": 177.18359375
+                    },
+                    "rss_min": {
+                        "current": 203.49609375,
+                        "peak": 357.32421875
+                    },
+                    "rss_self_min": {
+                        "current": 53.15234375,
+                        "peak": 177.18359375
+                    }
+                }
+            },
+            {
+                "timer.key": 4206953598612191052,
+                "timer.level": 2,
+                "timer.offset": 2,
+                "timer.tag": "pyc_generate@'<ipython-input-4-035e5301d56a>':1",
+                "timer.ref": {
+                    "laps": 1,
+                    "user_elapsed": 13270000,
+                    "system_elapsed": 20000,
+                    "wall_elapsed": 13289189,
+                    "cpu_elapsed": 13290000,
+                    "cpu_util": 1,
+                    "to_seconds_ratio_num": 1,
+                    "to_seconds_ratio_den": 1000000,
+                    "rss_max": {
+                        "current": 171.19140625,
+                        "peak": 278.34375
+                    },
+                    "rss_self": {
+                        "current": 20.84765625,
+                        "peak": 98.203125
+                    },
+                    "rss_min": {
+                        "current": 171.19140625,
+                        "peak": 278.34375
+                    },
+                    "rss_self_min": {
+                        "current": 20.84765625,
+                        "peak": 98.203125
+                    }
+                }
+            },
+            {
+                "timer.key": 2822355472519038864,
+                "timer.level": 3,
+                "timer.offset": 3,
+                "timer.tag": "pyc_generate@[tomopy.misc.phantom.shepp2d]",
+                "timer.ref": {
+                    "laps": 1,
+                    "user_elapsed": 20000,
+                    "system_elapsed": 10000,
+                    "wall_elapsed": 27518,
+                    "cpu_elapsed": 30000,
+                    "cpu_util": 1,
+                    "to_seconds_ratio_num": 1,
+                    "to_seconds_ratio_den": 1000000,
+                    "rss_max": {
+                        "current": 156.8046875,
+                        "peak": 186.6015625
+                    },
+                    "rss_self": {
+                        "current": 6.4609375,
+                        "peak": 6.4609375
+                    },
+                    "rss_min": {
+                        "current": 156.8046875,
+                        "peak": 186.6015625
+                    },
+                    "rss_self_min": {
+                        "current": 6.4609375,
+                        "peak": 6.4609375
+                    }
+                }
+            },
+            {
+                "timer.key": 14778558386390542112,
+                "timer.level": 3,
+                "timer.offset": 4,
+                "timer.tag": "pyc_generate@[tomopy.angles]",
+                "timer.ref": {
+                    "laps": 1,
+                    "user_elapsed": 0,
+                    "system_elapsed": 0,
+                    "wall_elapsed": 109,
+                    "cpu_elapsed": 0,
+                    "cpu_util": 0,
+                    "to_seconds_ratio_num": 1,
+                    "to_seconds_ratio_den": 1000000,
+                    "rss_max": {
+                        "current": 156.8046875,
+                        "peak": 186.6015625
+                    },
+                    "rss_self": {
+                        "current": 0.0,
+                        "peak": 0.0
+                    },
+                    "rss_min": {
+                        "current": 156.8046875,
+                        "peak": 186.6015625
+                    },
+                    "rss_self_min": {
+                        "current": 0.0,
+                        "peak": 0.0
+                    }
+                }
+            },
+            {
+                "timer.key": 14804259824998881938,
+                "timer.level": 3,
+                "timer.offset": 5,
+                "timer.tag": "pyc_generate@[tomopy.project]",
+                "timer.ref": {
+                    "laps": 1,
+                    "user_elapsed": 13250000,
+                    "system_elapsed": 10000,
+                    "wall_elapsed": 13259509,
+                    "cpu_elapsed": 13260000,
+                    "cpu_util": 1,
+                    "to_seconds_ratio_num": 1,
+                    "to_seconds_ratio_den": 1000000,
+                    "rss_max": {
+                        "current": 171.02734375,
+                        "peak": 278.1796875
+                    },
+                    "rss_self": {
+                        "current": 14.22265625,
+                        "peak": 91.578125
+                    },
+                    "rss_min": {
+                        "current": 171.02734375,
+                        "peak": 278.1796875
+                    },
+                    "rss_self_min": {
+                        "current": 14.22265625,
+                        "peak": 91.578125
+                    }
+                }
+            },
+            {
+                "timer.key": 8955686507139169408,
+                "timer.level": 2,
+                "timer.offset": 6,
+                "timer.tag": "pyc_run@[tomopy.recon(algorithm='sirt')]",
+                "timer.ref": {
+                    "laps": 1,
+                    "user_elapsed": 1069060000,
+                    "system_elapsed": 411470000,
+                    "wall_elapsed": 1479990656,
+                    "cpu_elapsed": 1480530000,
+                    "cpu_util": 1,
+                    "to_seconds_ratio_num": 1,
+                    "to_seconds_ratio_den": 1000000,
+                    "rss_max": {
+                        "current": 192.109375,
+                        "peak": 327.37890625
+                    },
+                    "rss_self": {
+                        "current": 9.09765625,
+                        "peak": 37.21484375
+                    },
+                    "rss_min": {
+                        "current": 192.109375,
+                        "peak": 327.37890625
+                    },
+                    "rss_self_min": {
+                        "current": 9.09765625,
+                        "peak": 37.21484375
+                    }
+                }
+            },
+            {
+                "timer.key": 8854214519748510380,
+                "timer.level": 2,
+                "timer.offset": 7,
+                "timer.tag": "pyc_output_images[ndarray]@'benchmark.py':281",
+                "timer.ref": {
+                    "laps": 4,
+                    "user_elapsed": 500000,
+                    "system_elapsed": 30000,
+                    "wall_elapsed": 343443,
+                    "cpu_elapsed": 530000,
+                    "cpu_util": 1,
+                    "to_seconds_ratio_num": 1,
+                    "to_seconds_ratio_den": 1000000,
+                    "rss_max": {
+                        "current": 215.265625,
+                        "peak": 357.32421875
+                    },
+                    "rss_self": {
+                        "current": 5.921875,
+                        "peak": 27.26953125
+                    },
+                    "rss_min": {
+                        "current": 215.265625,
+                        "peak": 357.32421875
+                    },
+                    "rss_self_min": {
+                        "current": 0.0,
+                        "peak": 0.0
+                    }
+                }
+            },
+            {
+                "timer.key": 4601531311518338357,
+                "timer.level": 3,
+                "timer.offset": 8,
+                "timer.tag": "pyc_output_image[ndarray]@'benchmark.py':81",
+                "timer.ref": {
+                    "laps": 4,
+                    "user_elapsed": 500000,
+                    "system_elapsed": 20000,
+                    "wall_elapsed": 335171,
+                    "cpu_elapsed": 520000,
+                    "cpu_util": 1,
+                    "to_seconds_ratio_num": 1,
+                    "to_seconds_ratio_den": 1000000,
+                    "rss_max": {
+                        "current": 220.8125,
+                        "peak": 357.32421875
+                    },
+                    "rss_self": {
+                        "current": 5.81640625,
+                        "peak": 27.26953125
+                    },
+                    "rss_min": {
+                        "current": 215.265625,
+                        "peak": 357.32421875
+                    },
+                    "rss_self_min": {
+                        "current": 0.0,
+                        "peak": 0.0
+                    }
+                }
+            }
+        ]
+    }
+}]
+}
+
