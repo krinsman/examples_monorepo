@@ -26,6 +26,8 @@ RUN \
     curl						\
     # this will fail without ca-certificates
     # because of the --no-install-recommends flag
+    # also curl seems to need it now to download miniconda script b/c of permissions/authentication
+    # maybe that's new to the repo.anaconda.com URL vs the old repo.continuum.io URL -- I don't know
     ca-certificates					\
     libffi-dev						\
     lsb-release						\
@@ -38,8 +40,17 @@ RUN \
 #
 # Install Miniconda
 #
-    curl -s -o miniconda3.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh    &&  \
+    # URL needed to be updated to repo.anaconda.com from repo.continuum.io -- curl doesn't handle redirects?
+    # as another option -L flag was supposed to allow curl to follow redirects,
+    # but even with that flag and old URL curl still seems to fail silently and not download the script
+    # I guess mabye because authentication is being used, which would also explain the need for ca-certificates for this to work
+    # https://stackoverflow.com/questions/18474690/is-there-a-way-to-follow-redirects-with-command-line-curl#comment41186114_18474746
+    curl -s -o miniconda3.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh    &&  \
+    # in any case using new URL seems stabler than assuming redirect from old URL to new URL will last forever
     bash miniconda3.sh -f -b -p /opt/anaconda3							      &&  \
+    # I don't particularly like python 3.7 of all python versions. but fixing python version to be 3.7
+    # in line below http://damianavila.github.io/blog/es/posts/how-to-pin-conda.html
+    # ensures that the environment.yml (which uses all Python 3.7 package versions) can still work
     echo "python 3.7.*" >> /opt/anaconda3/conda-meta/pinned					      &&  \
     /opt/anaconda3/bin/conda clean --all --yes							      &&  \
     rm -rf /opt/anaconda3/pkgs/*   	 							      &&  \
@@ -48,7 +59,7 @@ RUN \
 #
     $imageUtils add_users									      &&  \
 #
-# Clean up after ourselves
+# Clean up after ourselves: prevent cruft in /tmp directory from increasing image layer size
 #
     rm -rf *
     
