@@ -1,0 +1,8 @@
+name: base
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - jupyterhub
+  - jupyterlab=2.2.0
+  - nodejs
