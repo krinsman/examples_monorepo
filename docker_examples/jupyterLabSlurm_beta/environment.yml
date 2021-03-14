@@ -4,5 +4,5 @@ channels:
   - defaults
 dependencies:
   - jupyterhub
-  - jupyterlab=2.2.0
+  - jupyterlab=2.1.2
   - nodejs

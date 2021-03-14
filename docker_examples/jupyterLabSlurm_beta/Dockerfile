@@ -1,5 +1,5 @@
 # most recent LTS at time this Dockerfile was written
-FROM ubuntu:bionic
+FROM ubuntu:hirsute
 LABEL maintainer="William Krinsman <krinsman@berkeley.edu>"
 
 ARG imageUtils=./utils.sh
