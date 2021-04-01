@@ -1,17 +1,18 @@
+{% set jupyterlab_version = "" %}
+{% set version = "" %}
+
 package:
   name: 
-  version: 
+  version: {{ version }}
 
 source:
   git_url: 
 
 requirements:
   build:
-    - nodejs
-    - jupyterlab
+    - jupyterlab>={{ jupyterlab_version }}
   run:
-    - nodejs
-    - jupyterlab
+    - jupyterlab>={{ jupyterlab_version }}
 
 about:
   home: 

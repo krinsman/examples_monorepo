@@ -73,8 +73,8 @@ cd $PKG_NAME
 # If developer install instructions aren't provided, first try the pattern found in the docs:
 # http://jupyterlab.readthedocs.io/en/stable/developer/extension_dev.html#extension-authoring
 
-# npm install
-# npm run build
+# jlpm install
+# jlpm run build
 # jupyter labextension install .
 
 cd ..

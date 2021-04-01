@@ -64,9 +64,8 @@ source activate $ENVIRONMENT_DIRECTORY
 ##### Actually install the JupyterLab extension
 cd $PKG_NAME
 
-
-npm install
-npm run build
+jlpm install
+jlpm run build
 jupyter labextension install .
 
 cd ..
